@@ -13,23 +13,18 @@ class Clock {
     if (this.hours < 10){
       this.hours = '0' + this.hours;
     }
+    this.printTime();
     setInterval(this._tick.bind(this), 1000);
-    // this.printTime();
-    // this._tick();
   }
 
   printTime() {
-
     console.log(`${this.hours}:${this.minutes}:${this.seconds}`);
-    // Format the time in HH:MM:SS
-    // Use console.log to print it.
   }
 
   _tick() {
+    console.log(this);
     this.seconds += 1;
     this.printTime();
-    // 1. Increment the time by one second.
-    // 2. Call printTime.
   }
 }
 
