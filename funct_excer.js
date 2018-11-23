@@ -14,14 +14,14 @@ class Clock {
       this.hours = '0' + this.hours;
     }
     this.printTime();
-    setInterval(this._tick.bind(this), 1000);
+    setInterval(Clock._tick.bind(this), 1000);
   }
 
   printTime() {
     console.log(`${this.hours}:${this.minutes}:${this.seconds}`);
   }
 
-  _tick() {
+  static _tick() {
     console.log(this);
     this.seconds += 1;
     this.printTime();
