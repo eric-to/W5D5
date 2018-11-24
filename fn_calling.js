@@ -2,10 +2,12 @@ class Lamp {
   constructor() {
     this.name = "a lamp";
   }
+
 }
 
-const turnOn = function() {
-   console.log("Turning on " + this.name);
+const turnOn = function(str) {
+  console.log(this)
+   console.log("Turning on " + str + this.name);
 };
 
 const lamp = new Lamp();
@@ -13,14 +15,16 @@ const lamp = new Lamp();
 turnOn(); // should not work the way we want it to
 
 
-Function.prototype.myBind = function(context) {
-  return () => this.apply(context); // turnon(tis.name)
+Function.prototype.myBind = function(contextObj) {
+  // this = function (turnOn)
+  return (str) => this.call(contextObj, str); // turnon(tis.name)
+  // return (str) => this.apply(contextObj, [str]); // turnon(tis.name)
 };
 
-const boundTurnOn = turnOn.bind(lamp);
-const myBoundTurnOn = turnOn.myBind(lamp);
+// turnOn.bind(lamp)();
+turnOn.myBind(lamp)("hello");
 
 
 
-boundTurnOn(); // should say "Turning on a lamp"
-myBoundTurnOn(); // should say "Turning on a lamp"
+// boundTurnOn(); // should say "Turning on a lamp"
+// myBoundTurnOn(); // should say "Turning on a lamp"

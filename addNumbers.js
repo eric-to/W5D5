@@ -6,6 +6,7 @@ const reader = readline.createInterface({
 });
 
 function addNumbers(sum, numsLeft, completionCallback) {
+
   if (numsLeft > 0) {
     reader.question("Type a num: ", function (numStr) {
       const thisNum = parseInt(numStr);
@@ -16,7 +17,9 @@ function addNumbers(sum, numsLeft, completionCallback) {
       addNumbers(sum, numsLeft - 1, completionCallback);
     });
   } else {
-    completionCallback(sum);
+    // completionCallback(sum);
+    console.log('12' + 5);
+    reader.close();
   }
 }
 
@@ -26,5 +29,4 @@ function addNumbers(sum, numsLeft, completionCallback) {
 // });
 addNumbers(0, 5, sum => {
   console.log("Total Sum: " + sum);
-  reader.close();
 });
